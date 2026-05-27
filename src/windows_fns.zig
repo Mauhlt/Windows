@@ -187,3 +187,8 @@ pub export fn WndProcW(
         else => return DefWindowProcW(hwnd, msg, w_param, l_param),
     }
 }
+
+pub extern "user32" fn GetClientRect(
+    hwnd: t.HWND,
+    rect: *t.RECT,
+) callconv(.winapi) t.BOOL;
