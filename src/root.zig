@@ -33,6 +33,7 @@ pub const DefWindowProcW = WINDOW_FNS.DefWindowProcW;
 pub const DestroyWindow = WINDOW_FNS.DestroyWindow;
 pub const DispatchMessageA = WINDOW_FNS.DispatchMessageA;
 pub const DispatchMessageW = WINDOW_FNS.DispatchMessageW;
+pub const GetClientRect = WINDOW_FNS.GetClientRect;
 pub const GetMessageA = WINDOW_FNS.GetMessageA;
 pub const GetMessageW = WINDOW_FNS.GetMessageW;
 pub const GetModuleHandleA = WINDOW_FNS.GetModuleHandleA;
