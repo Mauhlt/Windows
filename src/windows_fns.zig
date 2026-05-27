@@ -190,5 +190,5 @@ pub export fn WndProcW(
 
 pub extern "user32" fn GetClientRect(
     hwnd: t.HWND,
-    rect: *t.RECT,
+    rect: *s.RECT,
 ) callconv(.winapi) t.BOOL;
