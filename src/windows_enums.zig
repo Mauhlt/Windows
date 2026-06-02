@@ -7,7 +7,7 @@ pub const Color = enum(i32) {
     window_text = 8,
 };
 
-const ClassStyle = enum(u32) {
+pub const ClassStyle = enum(u32) {
     v_redraw = 1,
     h_redraw = 2,
     redraw = blk: {
@@ -68,7 +68,7 @@ pub const SW = enum(i32) {
     restore = 9,
 };
 
-const WindowStyle = enum(u32) {
+pub const WindowStyle = enum(u32) {
     overlapped = 0x00_000_000,
     maximize_box = 0x00_010_000,
     minimize_box = 0x00_020_000,

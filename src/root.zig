@@ -4,9 +4,11 @@ const WINDOW_TYPES = @import("windows_types.zig");
 const WINDOW_FNS = @import("windows_fns.zig");
 const WINDOW_STRUCTS = @import("windows_structs.zig");
 // Windows Enums + EnumSets
+pub const ClassStyle = WINDOW_ENUMS.ClassStyle;
 pub const Messages = WINDOW_ENUMS.Messages;
 pub const SW = WINDOW_ENUMS.SW;
 pub const RemoveMessage = WINDOW_ENUMS.RemoveMessage;
+pub const WindowStyle = WINDOW_ENUMS.WindowStyle;
 // Enum Types
 pub const ATOM = WINDOW_TYPES.ATOM;
 pub const BOOL = WINDOW_TYPES.BOOL;
