@@ -6,17 +6,10 @@ pub const Color = enum(i32) {
     window_frame = 6,
     window_text = 8,
 };
-
 pub const ClassStyle = enum(u32) {
     v_redraw = 1,
     h_redraw = 2,
-    redraw = blk: {
-        var redraw: u32 = 0;
-        for ([_]ClassStyle{ .h_redraw, .v_redraw }) |class_style| {
-            redraw |= class_style;
-        }
-        break :blk redraw;
-    },
+    redraw = 1 | 2,
 };
 pub const Messages = enum(u32) {
     null = 0x0000,
@@ -87,42 +80,10 @@ pub const WindowStyle = enum(u32) {
     min = 0x20_000_000,
     child = 0x40_000_000,
     pop_up = 0x80_000_000,
-    overlapped_window = blk: {
-        var overlapped_window: u32 = 0;
-        for ([_]WindowStyle{
-            .overlapped,
-            .caption,
-            .sys_menu,
-            .thick_frame,
-            .minimize_box,
-            .maximize_box,
-        }) |window_style| {
-            overlapped_window |= window_style;
-        }
-        break :blk overlapped_window;
-    },
-    popup_window = blk: {
-        var popup_window: u32 = 0;
-        for ([_]WindowStyle{ .popup, .border, .sysmenu }) |window_style| {
-            popup_window |= window_style;
-        }
-        break :blk popup_window;
-    },
-    tiled_window = blk: {
-        var tiled_window: u32 = 0;
-        for ([_]WindowStyle{
-            .overlapped,
-            .caption,
-            .sys_menu,
-            .thick_frame,
-            .minimize_box,
-            .maximize_box,
-        }) |window_style| {
-            tiled_window |= window_style;
-        }
-        break :blk tiled_window;
-    },
+    overlapped_window = 0x00_000_000 | 0x00_C00_000 | 0x00_080_000 | 0x00_040_000 | 0x00_020_000 | 0x00_010_000,
+    popup_window = 0x80_000_000 | 0x00_800_000 | 0x00_080_000,
 };
+pub const TILED_WINDOW = WindowStyle.overlapped_window;
 pub const RemoveMessage = enum(u32) {
     no_remove = 0,
     remove = 1,

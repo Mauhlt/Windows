@@ -9,6 +9,7 @@ pub const Messages = WINDOW_ENUMS.Messages;
 pub const SW = WINDOW_ENUMS.SW;
 pub const RemoveMessage = WINDOW_ENUMS.RemoveMessage;
 pub const WindowStyle = WINDOW_ENUMS.WindowStyle;
+pub const TILED_WINDOW = WINDOW_ENUMS.TILED_WINDOW;
 // Enum Types
 pub const ATOM = WINDOW_TYPES.ATOM;
 pub const BOOL = WINDOW_TYPES.BOOL;
