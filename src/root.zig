@@ -4,12 +4,8 @@ const WINDOW_TYPES = @import("windows_types.zig");
 const WINDOW_FNS = @import("windows_fns.zig");
 const WINDOW_STRUCTS = @import("windows_structs.zig");
 // Windows Enums + EnumSets
-pub const OVERLAPPED_WINDOW = WINDOW_ENUMS.OVERLAPPED_WINDOW;
-pub const POPUP_WINDOW = WINDOW_ENUMS.POPUP_WINDOW;
-pub const TILED_WINDOW = WINDOW_ENUMS.TILED_WINDOW;
 pub const Messages = WINDOW_ENUMS.Messages;
 pub const SW = WINDOW_ENUMS.SW;
-pub const REDRAW = WINDOW_ENUMS.REDRAW;
 pub const RemoveMessage = WINDOW_ENUMS.RemoveMessage;
 // Enum Types
 pub const ATOM = WINDOW_TYPES.ATOM;
@@ -66,3 +62,10 @@ pub const WNDCLASSEXW = WINDOW_STRUCTS.WNDCLASSEXW;
 pub const MSG = WINDOW_STRUCTS.MSG;
 pub const POINT = WINDOW_STRUCTS.POINT;
 pub const RECT = WINDOW_STRUCTS.RECT;
+// Tests
+test {
+    _ = @import("windows_enums.zig");
+    _ = @import("windows_types.zig");
+    _ = @import("windows_fns.zig");
+    _ = @import("windows_structs.zig");
+}
