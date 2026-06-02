@@ -102,7 +102,7 @@ pub const TILED_WINDOW: WindowStyles = .initMany(&.{
     .minimize_box,
     .maximize_box,
 });
-pub const RemoveMsg = enum(u32) {
+pub const RemoveMessage = enum(u32) {
     no_remove = 0,
     remove = 1,
     no_yield = 2,

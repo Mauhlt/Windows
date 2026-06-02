@@ -137,7 +137,7 @@ pub extern "user32" fn PeekMessageA(
     hwnd: t.HWND,
     msg_filter_min: u32,
     msg_filter_max: u32,
-    remove_msg: e.RemoveMsg,
+    remove_msg: e.RemoveMessage,
 ) callconv(.winapi) t.BOOL;
 
 pub extern "user32" fn PeekMessageW(
@@ -145,7 +145,7 @@ pub extern "user32" fn PeekMessageW(
     hwnd: t.HWND,
     msg_filter_min: u32,
     msg_filter_max: u32,
-    remove_msg: e.RemoveMsg,
+    remove_msg: e.RemoveMessage,
 ) callconv(.winapi) t.BOOL;
 
 pub extern "user32" fn PostQuitMessage(
