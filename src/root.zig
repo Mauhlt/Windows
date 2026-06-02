@@ -52,6 +52,7 @@ pub const RegisterClassA = WINDOW_FNS.RegisterClassA;
 pub const RegisterClassW = WINDOW_FNS.RegisterClassW;
 pub const RegisterClassExA = WINDOW_FNS.RegisterClassExA;
 pub const RegisterClassExW = WINDOW_FNS.RegisterClassExW;
+pub const TranslateMessage = WINDOW_FNS.TranslateMessage;
 pub const UpdateWindow = WINDOW_FNS.UpdateWindow;
 pub const UnregisterClassA = WINDOW_FNS.UnregisterClassA;
 pub const UnregisterClassW = WINDOW_FNS.UnregisterClassW;
