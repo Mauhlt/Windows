@@ -134,7 +134,7 @@ pub extern "user32" fn LoadIconW(
 
 pub extern "user32" fn PeekMessageA(
     msg: *s.MSG,
-    hwnd: t.HWND,
+    hwnd: ?t.HWND,
     msg_filter_min: u32,
     msg_filter_max: u32,
     remove_msg: e.RemoveMessage,
@@ -142,7 +142,7 @@ pub extern "user32" fn PeekMessageA(
 
 pub extern "user32" fn PeekMessageW(
     msg: *s.MSG,
-    hwnd: t.HWND,
+    hwnd: ?t.HWND,
     msg_filter_min: u32,
     msg_filter_max: u32,
     remove_msg: e.RemoveMessage,
@@ -190,36 +190,6 @@ pub extern "user32" fn UnregisterClassW(
 pub extern "user32" fn UpdateWindow(
     hwnd: t.HWND,
 ) callconv(.winapi) i32;
-
-pub export fn WndProcA(
-    hwnd: t.HWND,
-    msg: u32,
-    w_param: t.WPARAM,
-    l_param: t.LPARAM,
-) callconv(.winapi) t.LRESULT {
-    switch (@as(e.Messages, @enumFromInt(msg))) {
-        .destroy => {
-            PostQuitMessage(0);
-            return @enumFromInt(0);
-        },
-        else => return DefWindowProcA(hwnd, msg, w_param, l_param),
-    }
-}
-
-pub export fn WndProcW(
-    hwnd: t.HWND,
-    msg: u32,
-    w_param: t.WPARAM,
-    l_param: t.LPARAM,
-) callconv(.winapi) t.LRESULT {
-    switch (@as(e.Messages, @enumFromInt(msg))) {
-        .destroy => {
-            PostQuitMessage(0);
-            return @enumFromInt(0);
-        },
-        else => return DefWindowProcW(hwnd, msg, w_param, l_param),
-    }
-}
 
 pub extern "user32" fn GetClientRect(
     hwnd: t.HWND,

@@ -1,6 +1,4 @@
 const std = @import("std");
-
-// Color
 pub const Color = enum(i32) {
     window = 5,
     window_frame = 6,
@@ -47,7 +45,6 @@ pub const Messages = enum(u32) {
     theme_changed = 0x031A,
     _,
 };
-
 pub const SW = enum(i32) {
     hide = 0,
     normal = 1,
@@ -60,7 +57,6 @@ pub const SW = enum(i32) {
     show_na = 8,
     restore = 9,
 };
-
 pub const WindowStyle = enum(u32) {
     overlapped = 0x00_000_000,
     maximize_box = 0x00_010_000,
