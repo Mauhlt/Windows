@@ -55,7 +55,7 @@ pub const WNDCLASSEXW = extern struct {
     small_icon: t.HICON,
 };
 pub const MSG = extern struct {
-    hwnd: ?t.HWND,
+    hwnd: t.HWND,
     msg: u32,
     wParam: t.WPARAM,
     lParam: t.LPARAM,
