@@ -55,8 +55,6 @@ pub const TranslateMessage = WINDOW_FNS.TranslateMessage;
 pub const UpdateWindow = WINDOW_FNS.UpdateWindow;
 pub const UnregisterClassA = WINDOW_FNS.UnregisterClassA;
 pub const UnregisterClassW = WINDOW_FNS.UnregisterClassW;
-// pub const WndProcA = WINDOW_FNS.WndProcA;
-// pub const WndProcW = WINDOW_FNS.WndProcW;
 // Structs
 pub const WNDCLASSA = WINDOW_STRUCTS.WNDCLASSA;
 pub const WNDCLASSW = WINDOW_STRUCTS.WNDCLASSW;
