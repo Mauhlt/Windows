@@ -182,7 +182,7 @@ pub extern "user32" fn SetTimer(
     hwnd: t.HWND,
     id_event: u32,
     elapse: u32,
-    timer_func: @TypeOf(TimerProc),
+    timer_func: *const @TypeOf(TimerProc),
 ) callconv(.winapi) u32;
 
 pub extern "user32" fn ShowWindow(
@@ -204,12 +204,12 @@ pub extern "user32" fn TimerProc(
 pub extern "user32" fn UnregisterClassA(
     class_name: [*:0]const u8,
     instance: t.HINSTANCE,
-) t.BOOL;
+) callconv(.winapi) t.BOOL;
 
 pub extern "user32" fn UnregisterClassW(
     class_name: [*:0]const u16,
     instance: t.HINSTANCE,
-) t.BOOL;
+) callconv(.winapi) t.BOOL;
 
 pub extern "user32" fn UpdateWindow(
     hwnd: t.HWND,
