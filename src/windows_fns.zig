@@ -194,13 +194,6 @@ pub extern "user32" fn TranslateMessage(
     msg: *const s.MSG,
 ) callconv(.winapi) i32;
 
-// pub extern "user32" fn TimerProc(
-//     hwnd: t.HWND,
-//     param2: u32,
-//     param3: u32,
-//     param4: u32,
-// ) callconv(.winapi) void;
-
 pub extern "user32" fn UnregisterClassA(
     class_name: [*:0]const u8,
     instance: t.HINSTANCE,
@@ -214,40 +207,6 @@ pub extern "user32" fn UnregisterClassW(
 pub extern "user32" fn UpdateWindow(
     hwnd: t.HWND,
 ) callconv(.winapi) i32;
-
-// pub export fn WndProcA(
-//     hwnd: t.HWND,
-//     msg: u32,
-//     w_param: t.WPARAM,
-//     l_param: t.LPARAM,
-// ) callconv(.winapi) t.LRESULT {
-//     _ = w_param;
-//     _ = l_param;
-//     switch (@as(e.Messages, @enumFromInt(msg))) {
-//         else => {
-//             // immediate exit
-//             _ = DestroyWindow(hwnd);
-//             return .null;
-//         },
-//     }
-// }
-//
-// pub export fn WndProcW(
-//     hwnd: t.HWND,
-//     msg: u32,
-//     w_param: t.WPARAM,
-//     l_param: t.LPARAM,
-// ) callconv(.winapi) t.LRESULT {
-//     _ = w_param;
-//     _ = l_param;
-//     switch (@as(e.Messages, @enumFromInt(msg))) {
-//         else => {
-//             // immediate exit
-//             _ = DestroyWindow(hwnd);
-//             return .null;
-//         },
-//     }
-// }
 
 pub const TimerProc = *const fn (
     hwnd: t.HWND,
