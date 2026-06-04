@@ -182,7 +182,7 @@ pub extern "user32" fn SetTimer(
     hwnd: t.HWND,
     id_event: u32,
     elapse: u32,
-    timer_func: Timerproc,
+    timer_func: TimerProc,
 ) callconv(.winapi) u32;
 
 pub extern "user32" fn ShowWindow(
@@ -194,7 +194,7 @@ pub extern "user32" fn TranslateMessage(
     msg: *const s.MSG,
 ) callconv(.winapi) i32;
 
-pub extern "user32" fn Timerproc(
+pub extern "user32" fn TimerProc(
     hwnd: t.HWND,
     param2: u32,
     param3: u32,
