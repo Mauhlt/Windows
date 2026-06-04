@@ -220,4 +220,4 @@ pub const WndProc = *const fn (
     msg: u32,
     w_param: t.WPARAM,
     l_param: t.LPARAM,
-) t.LRESULT;
+) callconv(.winapi) t.LRESULT;
