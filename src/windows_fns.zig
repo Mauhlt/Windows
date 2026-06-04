@@ -86,6 +86,11 @@ pub extern "user32" fn DispatchMessageW(
     msg: *const s.MSG,
 ) callconv(.winapi) t.LRESULT;
 
+pub extern "user32" fn GetClientRect(
+    hwnd: t.HWND,
+    rect: *s.RECT,
+) callconv(.winapi) t.BOOL;
+
 pub extern "user32" fn GetMessageA(
     msg: *s.MSG,
     hwnd: t.HWND,
@@ -168,6 +173,13 @@ pub extern "user32" fn RegisterClassExW(
     class: *const s.WNDCLASSEXW,
 ) callconv(.winapi) t.ATOM;
 
+pub extern "user32" fn SetTimer(
+    hwnd: t.HWND,
+    id_event: u32,
+    elapse: u32,
+    timer_func: Timerproc,
+) callconv(.winapi) u32;
+
 pub extern "user32" fn ShowWindow(
     hwnd: t.HWND,
     show_cmd: e.SW,
@@ -176,6 +188,13 @@ pub extern "user32" fn ShowWindow(
 pub extern "user32" fn TranslateMessage(
     msg: *const s.MSG,
 ) callconv(.winapi) i32;
+
+pub extern "user32" fn Timerproc(
+    hwnd: t.HWND,
+    param2: u32,
+    param3: u32,
+    param4: u32,
+) callconv(.winapi) void;
 
 pub extern "user32" fn UnregisterClassA(
     class_name: [*:0]const u8,
@@ -196,32 +215,11 @@ pub export fn WndProcA(
     msg: u32,
     w_param: t.WPARAM,
     l_param: t.LPARAM,
-) callconv(.winapi) t.LRESULT {
-    switch (@as(e.Messages, @enumFromInt(msg))) {
-        .destroy => {
-            PostQuitMessage(0);
-            return @enumFromInt(0);
-        },
-        else => return DefWindowProcA(hwnd, msg, w_param, l_param),
-    }
-}
+) callconv(.winapi) t.LRESULT;
 
 pub export fn WndProcW(
     hwnd: t.HWND,
     msg: u32,
     w_param: t.WPARAM,
     l_param: t.LPARAM,
-) callconv(.winapi) t.LRESULT {
-    switch (@as(e.Messages, @enumFromInt(msg))) {
-        .destroy => {
-            PostQuitMessage(0);
-            return @enumFromInt(0);
-        },
-        else => return DefWindowProcW(hwnd, msg, w_param, l_param),
-    }
-}
-
-pub extern "user32" fn GetClientRect(
-    hwnd: t.HWND,
-    rect: *s.RECT,
-) callconv(.winapi) t.BOOL;
+) callconv(.winapi) t.LRESULT;
