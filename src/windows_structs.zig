@@ -3,7 +3,7 @@ const ClassStyles = @import("windows_enums.zig").ClassStyles;
 // Structs
 pub const WNDCLASSA = extern struct {
     style: u32 = 0,
-    wnd_proc: *const fn (t.HWND, u32, t.WPARAM, t.LPARAM) callconv(.winapi) t.LRESULT,
+    wnd_proc: *const fn (t.HWND, u32, t.WPARAM, t.LPARAM) t.LRESULT,
     cb_cls_extra: i32 = 0,
     cb_wnd_extra: i32 = 0,
     instance: t.HINSTANCE,
@@ -15,7 +15,7 @@ pub const WNDCLASSA = extern struct {
 };
 pub const WNDCLASSEXA = extern struct {
     style: u32 = 0,
-    wnd_proc: *const fn (t.HWND, u32, t.WPARAM, t.LPARAM) callconv(.winapi) t.LRESULT,
+    wnd_proc: *const fn (t.HWND, u32, t.WPARAM, t.LPARAM) t.LRESULT,
     cb_cls_extra: i32 = 0,
     cb_wnd_extra: i32 = 0,
     instance: t.HINSTANCE,
@@ -28,7 +28,7 @@ pub const WNDCLASSEXA = extern struct {
 };
 pub const WNDCLASSW = extern struct {
     style: u32 = 0,
-    wnd_proc: *const fn (t.HWND, u32, t.WPARAM, t.LPARAM) callconv(.winapi) t.LRESULT,
+    wnd_proc: *const fn (t.HWND, u32, t.WPARAM, t.LPARAM) t.LRESULT,
     cls_extra: i32 = 0,
     wnd_extra: i32 = 0,
     instance: t.HINSTANCE,
@@ -41,7 +41,7 @@ pub const WNDCLASSW = extern struct {
 pub const WNDCLASSEXW = extern struct {
     size: u32 = @sizeOf(WNDCLASSEXW),
     style: u32 = 0,
-    wnd_proc: *const fn (t.HWND, u32, t.WPARAM, t.LPARAM) callconv(.winapi) t.LRESULT,
+    wnd_proc: *const fn (t.HWND, u32, t.WPARAM, t.LPARAM) t.LRESULT,
     cls_extra: i32 = 0,
     wnd_extra: i32 = 0,
     instance: t.HINSTANCE,
