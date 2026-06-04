@@ -182,7 +182,7 @@ pub extern "user32" fn SetTimer(
     hwnd: t.HWND,
     id_event: u32,
     elapse: u32,
-    timer_func: TimerProc,
+    timer_func: @TypeOf(TimerProc),
 ) callconv(.winapi) u32;
 
 pub extern "user32" fn ShowWindow(
