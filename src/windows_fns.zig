@@ -117,6 +117,11 @@ pub extern "gdi32" fn GetSysColorBrush(
     index: e.Color,
 ) callconv(.winapi) t.HBRUSH;
 
+pub extern "user32" fn KillTimer(
+    hwnd: t.HWND,
+    id_event: u32,
+) callconv(.winapi) t.BOOL;
+
 pub extern "user32" fn LoadCursorA(
     instance: t.HINSTANCE,
     cursor_name: [*:0]const u16,
@@ -215,11 +220,21 @@ pub export fn WndProcA(
     msg: u32,
     w_param: t.WPARAM,
     l_param: t.LPARAM,
-) callconv(.winapi) t.LRESULT;
+) callconv(.winapi) t.LRESULT {
+    _ = hwnd;
+    _ = msg;
+    _ = w_param;
+    _ = l_param;
+}
 
 pub export fn WndProcW(
     hwnd: t.HWND,
     msg: u32,
     w_param: t.WPARAM,
     l_param: t.LPARAM,
-) callconv(.winapi) t.LRESULT;
+) callconv(.winapi) t.LRESULT {
+    _ = hwnd;
+    _ = msg;
+    _ = w_param;
+    _ = l_param;
+}

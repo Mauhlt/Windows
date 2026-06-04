@@ -39,6 +39,7 @@ pub const Messages = enum(u32) {
     nc_calc_size = 0x0083,
     nc_activate = 0x0086,
     get_icon = 0x007F,
+    timer = 0x0113,
     moving = 0x0216,
     enter_size_move = 0x0231,
     exit_size_move = 0x0232,
