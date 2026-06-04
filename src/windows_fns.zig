@@ -214,27 +214,3 @@ pub extern "user32" fn UnregisterClassW(
 pub extern "user32" fn UpdateWindow(
     hwnd: t.HWND,
 ) callconv(.winapi) i32;
-
-pub export fn WndProcA(
-    hwnd: t.HWND,
-    msg: u32,
-    w_param: t.WPARAM,
-    l_param: t.LPARAM,
-) callconv(.winapi) t.LRESULT {
-    _ = hwnd;
-    _ = msg;
-    _ = w_param;
-    _ = l_param;
-}
-
-pub export fn WndProcW(
-    hwnd: t.HWND,
-    msg: u32,
-    w_param: t.WPARAM,
-    l_param: t.LPARAM,
-) callconv(.winapi) t.LRESULT {
-    _ = hwnd;
-    _ = msg;
-    _ = w_param;
-    _ = l_param;
-}

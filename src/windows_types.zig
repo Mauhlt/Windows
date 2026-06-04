@@ -1,5 +1,3 @@
-// Windows Types As Enums:
-// Atom, HWND, HINSTANCE, HBRUSH, HCURSOR, HICON, HINSTANCE, HMENU, HWND, LRESULT, LPARAM, WPARAM
 pub const ATOM = enum(u16) {
     null = 0,
     _,
