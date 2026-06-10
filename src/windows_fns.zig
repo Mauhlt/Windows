@@ -178,6 +178,10 @@ pub extern "user32" fn RegisterClassExW(
     class: *const s.WNDCLASSEXW,
 ) callconv(.winapi) t.ATOM;
 
+pub extern "user32" fn SetProcessDpiAwarenessContext(
+    e.DpiAwarenessContext,
+) callconv(.winapi) t.BOOL;
+
 pub extern "user32" fn SetTimer(
     hwnd: t.HWND,
     id_event: u32,
