@@ -9,6 +9,13 @@ pub const ClassStyle = enum(u32) {
     h_redraw = 2,
     redraw = 1 | 2,
 };
+pub const DpiAwarenessContext = enum(i32) {
+    unaware = -1,
+    system_aware = -2,
+    per_monitor_aware = -3,
+    per_monitor_aware_v2 = -4, // app handles dpi, windows sends wm_dpichanged, does not blur content
+    unaware_gdiscaled = -5,
+};
 pub const Messages = enum(u32) {
     null = 0x0000,
     create = 0x0001,
