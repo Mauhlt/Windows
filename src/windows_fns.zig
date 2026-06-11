@@ -91,6 +91,10 @@ pub extern "user32" fn GetClientRect(
     rect: *s.RECT,
 ) callconv(.winapi) t.BOOL;
 
+pub extern "user32" fn GetDpiForWindow(
+    hwnd: t.HWND,
+) callconv(.winapi) u32;
+
 pub extern "user32" fn GetMessageA(
     msg: *s.MSG,
     hwnd: t.HWND,
