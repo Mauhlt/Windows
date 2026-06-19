@@ -87,8 +87,8 @@ pub const WindowStyle = enum(u32) {
     pop_up = 0x80_000_000,
     overlapped_window = 0x00_000_000 | 0x00_C00_000 | 0x00_080_000 | 0x00_040_000 | 0x00_020_000 | 0x00_010_000,
     popup_window = 0x80_000_000 | 0x00_800_000 | 0x00_080_000,
+    pub const tiled_window = WindowStyle.overlapped_window;
 };
-pub const TILED_WINDOW = WindowStyle.overlapped_window;
 pub const RemoveMessage = enum(u32) {
     no_remove = 0,
     remove = 1,

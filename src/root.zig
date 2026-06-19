@@ -11,7 +11,6 @@ pub const Messages = WINDOW_ENUMS.Messages;
 pub const SW = WINDOW_ENUMS.SW;
 pub const RemoveMessage = WINDOW_ENUMS.RemoveMessage;
 pub const WindowStyle = WINDOW_ENUMS.WindowStyle;
-pub const TILED_WINDOW = WINDOW_ENUMS.TILED_WINDOW;
 // Types
 pub const ATOM = WINDOW_TYPES.ATOM;
 pub const BOOL = WINDOW_TYPES.BOOL;
@@ -58,7 +57,6 @@ pub const RegisterClassW = WINDOW_FNS.RegisterClassW;
 pub const RegisterClassExA = WINDOW_FNS.RegisterClassExA;
 pub const RegisterClassExW = WINDOW_FNS.RegisterClassExW;
 pub const TranslateMessage = WINDOW_FNS.TranslateMessage;
-pub const TimerProc = WINDOW_FNS.TimerProc;
 pub const UpdateWindow = WINDOW_FNS.UpdateWindow;
 pub const UnregisterClassA = WINDOW_FNS.UnregisterClassA;
 pub const UnregisterClassW = WINDOW_FNS.UnregisterClassW;
