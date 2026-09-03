@@ -33,6 +33,18 @@ pub const HWND = enum(isize) {
     null = 0,
     _,
 };
+pub const HRESULT = enum(isize) {
+    null = 0,
+    _,
+
+    pub fn succeeded(self: @This()) bool {
+        return @intFromEnum(self) >= 0;
+    }
+
+    pub fn failed(self: @This()) bool {
+        return @intFromEnum(self) < 0;
+    }
+};
 pub const LRESULT = enum(isize) {
     null = 0,
     _,
