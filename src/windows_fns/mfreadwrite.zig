@@ -14,7 +14,7 @@ pub const MF_SOURCE_READER_MEDIASOURCE: u32 = 0xFFFFFFFF;
 pub const MF_SOURCE_READER_CONTROLF_DRAIN: u32 = 0x1;
 
 /// `stream_flags` returned by IMFSourceReader.readSample.
-pub const SourceReaderFlags = packed struct(u32) {
+pub const SourceReaderFlags = bitpack struct(u32) {
     @"error": bool = false, // 0x1
     end_of_stream: bool = false, // 0x2
     new_stream: bool = false, // 0x4

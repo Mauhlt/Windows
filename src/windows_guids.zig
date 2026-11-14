@@ -13,7 +13,7 @@ pub fn mediaTypeGuid(format: u32) GUID {
     };
 }
 pub fn fourcc(comptime code: *const [4]u8) u32 {
-    return @as(u32, code[0]) | @as(u32, code[1]) << 8 | @as(u32, code[2]) << 16 | @as(u32, code[3]) << 24;
+    return @as(u32, code[0]) | (@as(u32, code[1]) << 8) | (@as(u32, code[2]) << 16) | (@as(u32, code[3]) << 24);
 }
 
 // --- Interface ids ---------------------------------------------------------

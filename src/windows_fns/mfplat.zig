@@ -4,7 +4,7 @@ const com = @import("../windows_com.zig");
 
 pub const MF_SDK_VERSION: u32 = 0x0002;
 pub const MF_API_VERSION: u32 = 0x0070;
-pub const MF_VERSION: u32 = MF_SDK_VERSION << 16 | MF_API_VERSION;
+pub const MF_VERSION: u32 = (MF_SDK_VERSION << 16) | MF_API_VERSION;
 
 pub const MFSTARTUP_FULL: u32 = 0;
 pub const MFSTARTUP_NOSOCKET: u32 = 1;

@@ -1,6 +1,6 @@
 //! Win32 enums and bit-flag sets.
 //!
-//! Flag sets are `packed struct(u32)` so they can be combined, e.g.
+//! Flag sets are `bitpack struct(u32)` so they can be combined, e.g.
 //! `WindowStyle{ .caption = true, .sys_menu = true }`, and are ABI-identical to the
 //! underlying `DWORD` when passed to extern functions.
 const t = @import("windows_types.zig");
@@ -41,7 +41,7 @@ pub const Color = enum(i32) {
 };
 
 /// CS_* window class styles.
-pub const ClassStyle = packed struct(u32) {
+pub const ClassStyle = bitpack struct(u32) {
     v_redraw: bool = false, // 0x0001
     h_redraw: bool = false, // 0x0002
     _r2: u1 = 0,
@@ -65,7 +65,7 @@ pub const ClassStyle = packed struct(u32) {
 };
 
 /// WS_* window styles. The low 16 bits are control-specific (BS_*, ES_*, ...).
-pub const WindowStyle = packed struct(u32) {
+pub const WindowStyle = bitpack struct(u32) {
     control: u16 = 0,
     maximize_box: bool = false, // 0x00010000 (WS_TABSTOP for controls)
     minimize_box: bool = false, // 0x00020000 (WS_GROUP for controls)
@@ -104,7 +104,7 @@ pub const WindowStyle = packed struct(u32) {
 };
 
 /// WS_EX_* extended window styles.
-pub const WindowStyleEx = packed struct(u32) {
+pub const WindowStyleEx = bitpack struct(u32) {
     dlg_modal_frame: bool = false, // 0x00000001
     _r1: u1 = 0,
     no_parent_notify: bool = false, // 0x00000004
@@ -138,7 +138,7 @@ pub const WindowStyleEx = packed struct(u32) {
 };
 
 /// SWP_* flags for SetWindowPos.
-pub const SetWindowPosFlags = packed struct(u32) {
+pub const SetWindowPosFlags = bitpack struct(u32) {
     no_size: bool = false, // 0x0001
     no_move: bool = false, // 0x0002
     no_z_order: bool = false, // 0x0004
@@ -367,7 +367,7 @@ pub const SystemIcon = enum(u16) {
 };
 
 /// CoInitializeEx COINIT_* flags. `.{}` is COINIT_MULTITHREADED.
-pub const CoInit = packed struct(u32) {
+pub const CoInit = bitpack struct(u32) {
     _r0: u1 = 0,
     apartment_threaded: bool = false, // 0x2
     disable_ole1dde: bool = false, // 0x4
@@ -427,7 +427,7 @@ pub const Ancestor = enum(u32) {
 };
 
 /// ChildWindowFromPointEx CWP_* flags. `.{}` is CWP_ALL.
-pub const ChildFromPoint = packed struct(u32) {
+pub const ChildFromPoint = bitpack struct(u32) {
     skip_invisible: bool = false, // 0x1
     skip_disabled: bool = false, // 0x2
     skip_transparent: bool = false, // 0x4
@@ -435,7 +435,7 @@ pub const ChildFromPoint = packed struct(u32) {
 };
 
 /// AnimateWindow AW_* flags.
-pub const AnimateWindowFlags = packed struct(u32) {
+pub const AnimateWindowFlags = bitpack struct(u32) {
     hor_positive: bool = false, // 0x00001
     hor_negative: bool = false, // 0x00002
     ver_positive: bool = false, // 0x00004
@@ -458,14 +458,14 @@ pub const WindowDisplayAffinity = enum(u32) {
 };
 
 /// SetLayeredWindowAttributes LWA_* flags.
-pub const LayeredWindowFlags = packed struct(u32) {
+pub const LayeredWindowFlags = bitpack struct(u32) {
     color_key: bool = false, // 0x1
     alpha: bool = false, // 0x2
     _r2: u30 = 0,
 };
 
 /// UpdateLayeredWindow ULW_* flags.
-pub const UpdateLayeredWindowFlags = packed struct(u32) {
+pub const UpdateLayeredWindowFlags = bitpack struct(u32) {
     color_key: bool = false, // 0x1
     alpha: bool = false, // 0x2
     @"opaque": bool = false, // 0x4
@@ -474,7 +474,7 @@ pub const UpdateLayeredWindowFlags = packed struct(u32) {
 };
 
 /// FLASHWINFO FLASHW_* flags. `.{}` is FLASHW_STOP.
-pub const FlashWindowFlags = packed struct(u32) {
+pub const FlashWindowFlags = bitpack struct(u32) {
     caption: bool = false, // 0x1
     tray: bool = false, // 0x2
     timer: bool = false, // 0x4
@@ -491,7 +491,7 @@ pub const FlashWindowFlags = packed struct(u32) {
 // ---------------------------------------------------------------------------
 
 /// GetQueueStatus / MsgWaitForMultipleObjects QS_* wake mask.
-pub const QueueStatus = packed struct(u32) {
+pub const QueueStatus = bitpack struct(u32) {
     key: bool = false, // 0x0001
     mouse_move: bool = false, // 0x0002
     mouse_button: bool = false, // 0x0004
@@ -525,7 +525,7 @@ pub const QueueStatus = packed struct(u32) {
 };
 
 /// SendMessageTimeout SMTO_* flags. `.{}` is SMTO_NORMAL.
-pub const SendMessageTimeoutFlags = packed struct(u32) {
+pub const SendMessageTimeoutFlags = bitpack struct(u32) {
     block: bool = false, // 0x01
     abort_if_hung: bool = false, // 0x02
     _r2: u1 = 0,
@@ -556,7 +556,7 @@ pub const HookId = enum(i32) {
 };
 
 /// SetWinEventHook WINEVENT_* flags. `.{}` is WINEVENT_OUTOFCONTEXT.
-pub const WinEventHookFlags = packed struct(u32) {
+pub const WinEventHookFlags = bitpack struct(u32) {
     skip_own_thread: bool = false, // 0x1
     skip_own_process: bool = false, // 0x2
     in_context: bool = false, // 0x4
@@ -564,7 +564,7 @@ pub const WinEventHookFlags = packed struct(u32) {
 };
 
 /// RegisterHotKey MOD_* modifiers.
-pub const HotKeyModifiers = packed struct(u32) {
+pub const HotKeyModifiers = bitpack struct(u32) {
     alt: bool = false, // 0x0001
     control: bool = false, // 0x0002
     shift: bool = false, // 0x0004
@@ -579,7 +579,7 @@ pub const HotKeyModifiers = packed struct(u32) {
 // ---------------------------------------------------------------------------
 
 /// RedrawWindow RDW_* flags.
-pub const RedrawWindowFlags = packed struct(u32) {
+pub const RedrawWindowFlags = bitpack struct(u32) {
     invalidate: bool = false, // 0x0001
     internal_paint: bool = false, // 0x0002
     erase: bool = false, // 0x0004
@@ -596,7 +596,7 @@ pub const RedrawWindowFlags = packed struct(u32) {
 };
 
 /// GetDCEx DCX_* flags.
-pub const GetDCExFlags = packed struct(u32) {
+pub const GetDCExFlags = bitpack struct(u32) {
     window: bool = false, // 0x000001
     cache: bool = false, // 0x000002
     no_reset_attrs: bool = false, // 0x000004
@@ -614,7 +614,7 @@ pub const GetDCExFlags = packed struct(u32) {
 };
 
 /// DrawText DT_* format. `.{}` is DT_TOP | DT_LEFT.
-pub const DrawTextFormat = packed struct(u32) {
+pub const DrawTextFormat = bitpack struct(u32) {
     center: bool = false, // 0x000001
     right: bool = false, // 0x000002
     v_center: bool = false, // 0x000004
@@ -649,7 +649,7 @@ pub const ScrollBar = enum(i32) {
 };
 
 /// SCROLLINFO SIF_* mask.
-pub const ScrollInfoMask = packed struct(u32) {
+pub const ScrollInfoMask = bitpack struct(u32) {
     range: bool = false, // 0x01
     page: bool = false, // 0x02
     pos: bool = false, // 0x04
@@ -673,7 +673,7 @@ pub const ImageType = enum(u32) {
 };
 
 /// LoadImage / CopyImage LR_* flags. `.{}` is LR_DEFAULTCOLOR.
-pub const LoadImageFlags = packed struct(u32) {
+pub const LoadImageFlags = bitpack struct(u32) {
     monochrome: bool = false, // 0x0001
     color: bool = false, // 0x0002
     copy_return_org: bool = false, // 0x0004
@@ -696,7 +696,7 @@ pub const LoadImageFlags = packed struct(u32) {
 
 /// MF_* flags for AppendMenu / InsertMenu / ModifyMenu / EnableMenuItem / CheckMenuItem / ...
 /// `.{}` is MF_STRING | MF_ENABLED | MF_UNCHECKED | MF_BYCOMMAND.
-pub const MenuFlags = packed struct(u32) {
+pub const MenuFlags = bitpack struct(u32) {
     grayed: bool = false, // 0x0001
     disabled: bool = false, // 0x0002
     bitmap: bool = false, // 0x0004
@@ -725,7 +725,7 @@ pub const MenuFlags = packed struct(u32) {
 };
 
 /// TrackPopupMenu(Ex) TPM_* flags. `.{}` is TPM_LEFTBUTTON | TPM_LEFTALIGN | TPM_TOPALIGN.
-pub const TrackPopupMenuFlags = packed struct(u32) {
+pub const TrackPopupMenuFlags = bitpack struct(u32) {
     recurse: bool = false, // 0x00001
     right_button: bool = false, // 0x00002
     center_align: bool = false, // 0x00004
@@ -748,7 +748,7 @@ pub const TrackPopupMenuFlags = packed struct(u32) {
 };
 
 /// MENUITEMINFO MIIM_* mask.
-pub const MenuItemInfoMask = packed struct(u32) {
+pub const MenuItemInfoMask = bitpack struct(u32) {
     state: bool = false, // 0x001
     id: bool = false, // 0x002
     submenu: bool = false, // 0x004
@@ -766,7 +766,7 @@ pub const MenuItemInfoMask = packed struct(u32) {
 // ---------------------------------------------------------------------------
 
 /// TRACKMOUSEEVENT TME_* flags.
-pub const TrackMouseEventFlags = packed struct(u32) {
+pub const TrackMouseEventFlags = bitpack struct(u32) {
     hover: bool = false, // 0x00000001
     leave: bool = false, // 0x00000002
     _r2: u2 = 0,
@@ -793,7 +793,7 @@ pub const InputType = enum(u32) {
 };
 
 /// MOUSEINPUT / mouse_event MOUSEEVENTF_* flags.
-pub const MouseEventFlags = packed struct(u32) {
+pub const MouseEventFlags = bitpack struct(u32) {
     move: bool = false, // 0x0001
     left_down: bool = false, // 0x0002
     left_up: bool = false, // 0x0004
@@ -813,7 +813,7 @@ pub const MouseEventFlags = packed struct(u32) {
 };
 
 /// KEYBDINPUT / keybd_event KEYEVENTF_* flags.
-pub const KeyEventFlags = packed struct(u32) {
+pub const KeyEventFlags = bitpack struct(u32) {
     extended_key: bool = false, // 0x1
     key_up: bool = false, // 0x2
     unicode: bool = false, // 0x4
@@ -843,7 +843,7 @@ pub const RawInputDeviceInfoCommand = enum(u32) {
 };
 
 /// RAWINPUTDEVICE RIDEV_* flags.
-pub const RawInputDeviceFlags = packed struct(u32) {
+pub const RawInputDeviceFlags = bitpack struct(u32) {
     remove: bool = false, // 0x0001
     _r1: u3 = 0,
     exclude: bool = false, // 0x0010
@@ -877,7 +877,7 @@ pub const PointerInputType = enum(u32) {
 };
 
 /// POINTER_FLAG_* bits.
-pub const PointerFlags = packed struct(u32) {
+pub const PointerFlags = bitpack struct(u32) {
     new: bool = false, // 0x000001
     in_range: bool = false, // 0x000002
     in_contact: bool = false, // 0x000004
@@ -984,13 +984,13 @@ pub const DpiHostingBehavior = enum(i32) {
 };
 
 /// MONITORINFO.flags.
-pub const MonitorInfoFlags = packed struct(u32) {
+pub const MonitorInfoFlags = bitpack struct(u32) {
     primary: bool = false, // 0x1
     _r1: u31 = 0,
 };
 
 /// GetAutoRotationState AR_* bits. `.{}` is AR_ENABLED.
-pub const AutoRotationState = packed struct(u32) {
+pub const AutoRotationState = bitpack struct(u32) {
     disabled: bool = false, // 0x01
     suspended: bool = false, // 0x02
     remote_session: bool = false, // 0x04
@@ -1003,7 +1003,7 @@ pub const AutoRotationState = packed struct(u32) {
 };
 
 /// ORIENTATION_PREFERENCE bits. `.{}` is ORIENTATION_PREFERENCE_NONE.
-pub const OrientationPreference = packed struct(u32) {
+pub const OrientationPreference = bitpack struct(u32) {
     landscape: bool = false, // 0x1
     portrait: bool = false, // 0x2
     landscape_flipped: bool = false, // 0x4

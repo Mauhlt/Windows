@@ -417,7 +417,7 @@ pub const MENUBARINFO = extern struct {
     bar: RECT = undefined,
     menu: t.HMENU = .null,
     hwnd_menu: t.HWND = .null,
-    focus: packed struct(u32) {
+    focus: bitpack struct(u32) {
         bar_focused: bool = false,
         focused: bool = false,
         _r2: u30 = 0,

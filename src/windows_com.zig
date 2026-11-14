@@ -174,7 +174,7 @@ pub const IMFAttributes = extern struct {
         return .{ .hi = @truncate(v >> 32), .lo = @truncate(v) };
     }
     pub fn setRatio(self: *Self, key: REFGUID, hi: u32, lo: u32) HRESULT {
-        return self.setUINT64(key, @as(u64, hi) << 32 | lo);
+        return self.setUINT64(key, (@as(u64, hi) << 32) | lo);
     }
     /// MFGetAttributeSize (e.g. MF_MT_FRAME_SIZE).
     pub fn getSize(self: *Self, key: REFGUID) error{HResultFailed}!struct { width: u32, height: u32 } {
